@@ -3,7 +3,7 @@
 const body = document.querySelector('body');
 
 const div = document.createElement('div');
-div.setAttribute('id', 'container');
+div.setAttribute('class', 'container');
 
 body.appendChild(div);
 
@@ -13,11 +13,22 @@ body.appendChild(div);
 
 let row1 = "";
 
-for (let i = 0; i < 4; i++) {
+for (let i = 0; i < 16; i++) {
     row1 += '<div class="square"></div>';
 };
 
 div.innerHTML = row1;
+
+
+let divs;
+
+for (let i = 0; i < 16; i++) {
+  divs = document.createElement('div');
+  divs.setAttribute('class', 'container');
+  body.appendChild(divs);
+  divs.innerHTML = row1;
+}
+
 
 let squares = document.querySelectorAll('.square');
 
