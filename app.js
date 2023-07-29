@@ -2,14 +2,15 @@
 
 const body = document.querySelector('body');
 
+const actualContainer = document.createElement('div');
+actualContainer.setAttribute('class', 'big-container');
+body.appendChild(actualContainer);
+
 const div = document.createElement('div');
 div.setAttribute('class', 'container');
 
-body.appendChild(div);
 
-// const square = document.createElement('div');
-// square.setAttribute('class', 'square');
-// div.appendChild(square);
+
 
 let row1 = "";
 
@@ -25,7 +26,7 @@ let divs;
 for (let i = 0; i < 16; i++) {
   divs = document.createElement('div');
   divs.setAttribute('class', 'container');
-  body.appendChild(divs);
+  actualContainer.appendChild(divs);
   divs.innerHTML = row1;
 }
 
@@ -38,7 +39,7 @@ function changeColor() {
     this.classList.replace('square','squareBlack');
 };
 
-// square.addEventListener('click', changeColor);
+
 
 squares.forEach(square => {
     square.addEventListener('mouseover', changeColor)
