@@ -24,13 +24,13 @@ let squares = document.querySelectorAll('.square');
 
 
 function changeColor() {
-    this.classList.toggle('squareBlack');
+    this.classList.replace('square','squareBlack');
 };
 
 // square.addEventListener('click', changeColor);
 
 squares.forEach(square => {
-    square.addEventListener('click', changeColor)
+    square.addEventListener('mouseover', changeColor)
 })
 
 
