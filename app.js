@@ -2,12 +2,24 @@
 
 const body = document.querySelector('body');
 
+const buttonContainer = document.createElement('div');
+buttonContainer.setAttribute('class','button-container');
+body.appendChild(buttonContainer);
+
+const button = document.createElement('button');
+button.setAttribute('id','button');
+button.textContent = 'Adjust grid';
+buttonContainer.appendChild(button);
+
 const actualContainer = document.createElement('div');
 actualContainer.setAttribute('class', 'big-container');
 body.appendChild(actualContainer);
 
+
 const div = document.createElement('div');
 div.setAttribute('class', 'container');
+
+
 
 
 
