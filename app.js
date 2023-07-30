@@ -8,16 +8,21 @@ body.appendChild(buttonContainer);
 
 const button = document.createElement('button');
 button.setAttribute('id','button');
-button.textContent = 'Adjust grid';
+button.textContent = 'Adjust Grid';
 buttonContainer.appendChild(button);
+
+const buttonColor = document.createElement('button');
+buttonColor.setAttribute('id','button');
+buttonColor.textContent = 'Random Colors';
+buttonContainer.appendChild(buttonColor);
 
 const actualContainer = document.createElement('div');
 actualContainer.setAttribute('class', 'big-container');
 body.appendChild(actualContainer);
 
 
-const div = document.createElement('div');
-div.setAttribute('class', 'container');
+// const div = document.createElement('div');
+// div.setAttribute('class', 'container');
 
 
 
@@ -30,7 +35,7 @@ for (let i = 0; i < 16; i++) {
     row1 += '<div class="square"></div>';
 };
 
-div.innerHTML = row1;
+// div.innerHTML = row1;
 
 
 let divs;
@@ -40,10 +45,11 @@ for (let i = 0; i < 16; i++) {
   divs.setAttribute('class', 'container');
   actualContainer.appendChild(divs);
   divs.innerHTML = row1;
+  
 }
 
 
-let squares = document.querySelectorAll('.square');
+const squares = document.querySelectorAll('.square');
 
 
 
@@ -60,11 +66,51 @@ squares.forEach(square => {
 
 
 function adjustGrid() {
-    let gridSize = prompt('Enter a grid size');
-    alert(gridSize);
+    let gridSize = +prompt('Enter a grid size');
+    
+    clearGrid();
+
+    redeclareGrid(gridSize);
+
 };
 
-button.addEventListener('click', adjustGrid);
+function clearGrid() {
+    const sqElements = document.querySelectorAll('.square');
+    const containerElements = document.querySelectorAll('.container');
 
+    sqElements.forEach(item => item.remove());
+    containerElements.forEach(item => item.remove());
+};
+
+function redeclareGrid(num) {
+    let rdq = "";
+    let rdqDivs;
+
+        for (let i = 0; i < num; i++) {
+            rdq += '<div class="square"></div>';
+        };
+
+        
+
+        for (let i = 0; i < num; i++) {
+          rdqDivs = document.createElement('div');
+          rdqDivs.setAttribute('class', 'container');
+          actualContainer.appendChild(rdqDivs);
+          rdqDivs.innerHTML = rdq;
+        }
+
+        const rdqSquares = document.querySelectorAll('.square');
+
+        rdqSquares.forEach(square => {
+            square.addEventListener('mouseover', changeColor)
+        });
+}
+
+function randomColors() {
+    const classSquares = document.getElementsByClassName
+}
+
+button.addEventListener('click', adjustGrid);
+buttonColor.addEventListener('click', randomColors());
 
 
