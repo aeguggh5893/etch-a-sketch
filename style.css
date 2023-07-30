@@ -24,7 +24,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 800px;
+    max-height: 960px;
+    max-width: 960px;
 }
 
 body {

@@ -59,3 +59,12 @@ squares.forEach(square => {
 
 
 
+function adjustGrid() {
+    let gridSize = prompt('Enter a grid size');
+    alert(gridSize);
+};
+
+button.addEventListener('click', adjustGrid);
+
+
+
