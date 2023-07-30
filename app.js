@@ -106,8 +106,22 @@ function redeclareGrid(num) {
         });
 }
 
+function getRainbow() {
+    const randomColorz = Math.floor(Math.random()*16777215).toString(16);
+  
+    this.style.backgroundColor = "#" + randomColorz;
+  
+    
+}
+
 function randomColors() {
-    const classSquares = document.getElementsByClassName
+    const classSquares = document.querySelectorAll('.square');
+
+    classSquares.forEach(item => item.classList.replace('square', 'squareRandom'));
+
+    classSquares.forEach(square => {
+        square.addEventListener('mouseover', getRainbow)
+    });
 }
 
 button.addEventListener('click', adjustGrid);
