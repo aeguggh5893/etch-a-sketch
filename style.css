@@ -1,48 +1,16 @@
-.square {
-    min-height: 20px;
-    min-width: 20px;
-    border: 1px solid black;
-    
-}
-
-.squareBlack {
-    min-height: 20px;
-    min-width: 20px;
-    border: 1px solid black;
-    background-color: black;
-}
-
-.squareRandom {
-    min-height: 20px;
-    min-width: 20px;
-    border: 1px solid black;
-}
-
-.container {
-    display: flex;
-    margin: 0;
-    padding: 0;
-    
-}
-
-.big-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-height: 960px;
-    max-width: 960px;
-}
-
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    width: 100vw;
 }
 
-
-#button {
-    max-width: 200px;
-    max-height: 200px;
+.container {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
 }
+
