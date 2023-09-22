@@ -7,8 +7,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
     createBoard(16);
 
-    let body = document.querySelector('body');
-    body.addEventListener('click', drawMode);
+    document.querySelector('body').addEventListener('click', function(e) {
+        if (e.target.tagName != 'BUTTON') {
+            draw = !draw;
+            let drawing = document.querySelector('#draw');
+
+            if (draw) {
+                drawing.innerText = 'Draw Mode: On!';
+            } else {
+                drawing.innerText = 'Draw Mode: Off!';
+            };
+        };
+    });
 
     let blackButton = document.querySelector('#black');
     blackButton.addEventListener('click', blackColor);
@@ -57,17 +67,22 @@ function createBoard(size) {
 };
 
 function blackColor() {
+    
     let divs = document.querySelectorAll('.box');
+    color = 'black';
 
+    
     divs.forEach((item) => {
         item.addEventListener('mouseover', function() {
             this.style.backgroundColor = 'black';
         });
     });
+    
 };
 
 function rainbowColor() {
     let divs = document.querySelectorAll('.box');
+    color = 'random';
 
     divs.forEach((item) => {
         item.addEventListener('mouseover', function() {
@@ -76,6 +91,15 @@ function rainbowColor() {
     });
 };
 
+function colorChoice(choice) {
+    color = choice;
+
+    if (color === 'black') {
+        blackColor;
+    } else if (color === 'random') {
+        rainbowColor;
+    };
+};
 
 function eraser() {
     let divs = document.querySelectorAll('.box');
@@ -94,6 +118,13 @@ function changeSize() {
     } else {
         alert('Not a valid input, please enter a value between 1 and 64');
     };
+
+    let bar = document.querySelector('.bar');
+    let numberDisplay = bar.getElementsByTagName('h4')[1];
+    let rangeBarValue = bar.lastElementChild;
+    numberDisplay.innerText = `Grid Size: ${input}`;
+    rangeBarValue.value = input;
+
 };
 
 function clearBoard() {
@@ -115,17 +146,3 @@ function rangeValue(e) {
     createBoard(value);
 };
 
-function drawMode(e) {
-    let drawing = document.querySelector('#draw');
-    
-    if (e.target.tagName != 'BUTTON' || e.target.tagName != 'INPUT') {
-        draw = !draw;
-    } 
-
-    if (draw) {
-        drawing.innerText = 'Draw Mode: On!';
-    } else {
-        drawing.innerText = 'Draw Mode: Off!';
-    };
-
-};
