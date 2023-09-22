@@ -1,16 +1,53 @@
 body {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
 }
 
+.bar {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.bar > #draw {
+    margin-bottom: 0;
+}
+
+.etch-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
 .container {
     display: grid;
-    width: 500px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     border: 1px solid black;
 }
 
+.header {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header > h1,
+.header > h3 {
+    margin: 0;
+}
+
+.header > h1 {
+    margin-bottom: 10px;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    width: 600px;
+}
