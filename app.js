@@ -1,7 +1,7 @@
 "use strict"
 
 let color = 'black'
-let draw = true;
+let draw = false;
 
 document.addEventListener('DOMContentLoaded', function() {
     
@@ -21,9 +21,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     let blackButton = document.querySelector('#black');
+    // blackButton.addEventListener('click', setColor());
     blackButton.addEventListener('click', blackColor);
 
     let rainbowButton = document.querySelector('#rainbow');
+    // rainbowButton.addEventListener('click', setColor());
     rainbowButton.addEventListener('click', rainbowColor);
 
     let eraseButton = document.querySelector('#erase');
@@ -56,50 +58,77 @@ function createBoard(size) {
     for (let i = 0; i < boardSize; i++) {
         let div = document.createElement('div');
 
+        // div.addEventListener('mouseover', colorDiv);
+
+        div.addEventListener('mouseover', function() {
+            this.style.backgroundColor = 'black';
+        });
+
         board.insertAdjacentElement('beforeend', div);
         div.classList.add('box');
 
-        div.addEventListener('mouseover', function() {
-            this.style.backgroundColor = color;
-        });
 
     };
 };
+
+// function colorDiv() {
+//     if (color === 'random') {
+//         this.style.backgroundColor = `hsl(${Math.round(Math.random() * 360)}, 100%, 50%)`;
+//     } else {
+//         this.style.backGroundColor = 'black';
+//     };
+// };
+
+// function setColor(e) {
+//     if (e.target.id === 'black') {
+//         color = 'black';
+//     } else {
+//         color = 'random';
+//     };
+// };
+
+
 
 function blackColor() {
     
+
     let divs = document.querySelectorAll('.box');
     color = 'black';
-
+    
     
     divs.forEach((item) => {
+        
         item.addEventListener('mouseover', function() {
             this.style.backgroundColor = 'black';
         });
+    
     });
     
+    let ink = document.querySelector('#ink');
+    ink.innerText = 'Using Ink: Black!';
+
 };
 
 function rainbowColor() {
+    
     let divs = document.querySelectorAll('.box');
     color = 'random';
 
+    
+
     divs.forEach((item) => {
+        
         item.addEventListener('mouseover', function() {
             this.style.backgroundColor = `hsl(${Math.round(Math.random() * 360)}, 100%, 50%)`;
         });
+    
     });
+
+    let ink = document.querySelector('#ink');
+    ink.innerText = 'Using Ink: Rainbow!'
+
 };
 
-function colorChoice(choice) {
-    color = choice;
-
-    if (color === 'black') {
-        blackColor;
-    } else if (color === 'random') {
-        rainbowColor;
-    };
-};
 
 function eraser() {
     let divs = document.querySelectorAll('.box');
@@ -108,6 +137,9 @@ function eraser() {
             this.style.backgroundColor = 'white';
         });
     });
+
+    let ink = document.querySelector('#ink');
+    ink.innerText = 'Using Eraser!';
 };
 
 function changeSize() {
@@ -120,7 +152,7 @@ function changeSize() {
     };
 
     let bar = document.querySelector('.bar');
-    let numberDisplay = bar.getElementsByTagName('h4')[1];
+    let numberDisplay = bar.getElementsByTagName('h4')[2];
     let rangeBarValue = bar.lastElementChild;
     numberDisplay.innerText = `Grid Size: ${input}`;
     rangeBarValue.value = input;
@@ -137,7 +169,7 @@ function clearBoard() {
 
 function rangeNumber(e) {
     let bar = document.querySelector('.bar');
-    let numberDisplay = bar.getElementsByTagName('h4')[1];
+    let numberDisplay = bar.getElementsByTagName('h4')[2];
     numberDisplay.innerText = `Grid Size: ${e.target.value}`;
 };
 

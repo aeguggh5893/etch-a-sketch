@@ -51,3 +51,8 @@ body {
     margin-top: 20px;
     width: 600px;
 }
+
+#ink {
+    margin-bottom: 0;
+    width: 150px;
+}
